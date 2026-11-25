@@ -5,7 +5,14 @@ import logging
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from texts_msg import msg_09, msg_test
 from datetime import datetime, timedelta
-from key import API_TOKEN
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_TOKEN = os.getenv("BOT_API_TOKEN")
+if not API_TOKEN:
+    raise RuntimeError("Не задан BOT_API_TOKEN в переменных окружения")
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)

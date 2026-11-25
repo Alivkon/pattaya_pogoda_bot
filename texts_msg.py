@@ -1,11 +1,21 @@
+import os
+
 from aiogram import Bot, types
 from aiogram.types import ParseMode
 from aiogram.types import InlineKeyboardButton
+from dotenv import load_dotenv
+
 from weather_vibrosi import sagryaz, pogoda
 from stormglass_extrem_tides import prilivs
 
-from key import API_TOKEN
+load_dotenv()
+
+API_TOKEN = os.getenv("BOT_API_TOKEN")
+if not API_TOKEN:
+    raise RuntimeError("Не задан BOT_API_TOKEN в переменных окружения")
+
 bot = Bot(token=API_TOKEN)
+
 admin_id =1232578036
 chatid_1 = 1232578036 #1924485346#-1001924485346  # 11111Alex  
 chatid_2 = -1001969503829 # estate

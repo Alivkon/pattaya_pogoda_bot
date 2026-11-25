@@ -1,0 +1,16 @@
+services:
+  pattaya-pogoda-bot:
+    build: .
+    image: pattaya-pogoda-bot:latest
+    container_name: pattaya_pogoda_bot
+    restart: unless-stopped
+    init: true
+    env_file:
+      - .env
+    volumes:
+      - ./response.json:/app/response.json
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
