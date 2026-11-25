@@ -39,10 +39,10 @@ async def scheduled_job():
 scheduler_09.start()
 
 
-@dp.message_handler(commands="test")
+@dp.message_handler(commands="start")
 async def cmd_start(message: types.Message):
-    print("Команда /test")
-    await msg_test()
+    print("Команда /start")
+    await msg_test(chat_id=message.chat.id)
 
 
 if __name__ == "__main__":

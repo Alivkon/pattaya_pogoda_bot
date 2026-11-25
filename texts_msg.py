@@ -63,20 +63,20 @@ textmsg_21 = (
 )
 
 
-async def msg_test():
+async def msg_test(chat_id=None):
     priliv = await prilivs()  # ПРИЛИВЫ
     sagryaznen = await sagryaz()  # "ЗАГРЯЗНЕНИЕ ВОЗДУХА"
     pogoda_ = await pogoda()  # "ПОГОДА"
     textmsg_11 = (
-        f' 🫠🧯 <a href="{"https://openweathermap.org/city/1614295"}"><b>{"Погода в Патайе сегодня:"}</b></a>\n\n'
+        f' 🫠🧯 <a href="https://openweathermap.org/city/1614295"><b>{"Погода в Патайе сегодня:"}</b></a>\n\n'
         f"{pogoda_}\n"
         f" <b></b>\n"
         f"{sagryaznen}\n\n"
-        f'🌊 <a href= "{"https://stormglass.io/marine-weather/"}"><b>Время приливов - отливов:</b></a>\n'
+        f'🌊 <a href="https://stormglass.io/marine-weather/"><b>Время приливов - отливов:</b></a>\n'
         f"{priliv}\n"
     )
     await bot.send_message(
-        chat_id=admin_id,
+        chat_id=chat_id or admin_id,
         text=textmsg_11,
         parse_mode=ParseMode.HTML,
         disable_notification=True
